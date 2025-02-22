@@ -1,0 +1,76 @@
+﻿.news-container {
+    position: fixed; 
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1000; 
+}
+
+.news-column {
+    width: 70px; 
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    z-index: -1; 
+}
+
+.faq-section {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh; 
+    text-align: center; 
+    margin: 0; 
+}
+
+.faq-item {
+    margin-bottom: 15px; 
+}
+
+h2 {
+    margin-bottom: 20px; 
+}
+
+h4 {
+    font-weight: bold; 
+}
+
+.news-column-left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0; 
+}
+
+.news-column-right {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0; 
+}
+
+.news-item {
+    margin-bottom: 10px; 
+}
+
+    .news-item h5 {
+        font-size: 12px; 
+        margin: 0; 
+    }
+
+    .news-item p {
+        font-size: 10px; 
+        margin: 5px 0; 
+    }
+
+    .news-item img {
+        max-width: 100%; 
+        height: auto; 
+    }

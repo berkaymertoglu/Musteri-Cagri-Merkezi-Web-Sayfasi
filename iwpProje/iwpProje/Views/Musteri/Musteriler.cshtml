@@ -1,0 +1,70 @@
+﻿@model IEnumerable<iwpProje.Models.musteriler>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri Kayıtları</title>
+    <link href="~/css/table.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/custom-form.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="table-responsive">
+        <div>
+            <h1>Müşteri Kayıtları</h1>
+
+            <!-- TempData'dan alınan verileri burada gösteriyoruz -->
+            @if (TempData["personelid"] != null)
+            {
+                <div class="alert alert-info mt-2" style="background-color: #d1ecf1; color: #0c5460; border-color: #bee5eb;">
+                    <strong>Giriş Başarılı!</strong><br />
+                    <p><strong>Personel ID:</strong> @TempData["personelid"]</p>
+                    <p><strong>İsim:</strong> @TempData["isim"]</p>
+                    <p><strong>Soyisim:</strong> @TempData["soyisim"]</p>
+                    <p><strong>Oturum Başlangıç Zamanı:</strong> @TempData["oturumbaslangiczamani"]</p>
+                </div>
+            }
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Müşteri ID</th>
+                        <th>Müşteri Adı</th>
+                        <th>Telefon</th>
+                        <th>Adres</th>
+                        <th>E-posta</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.musteriid</td>
+                            <td>@item.musteriadi</td>
+                            <td>@item.musteritel</td>
+                            <td>@item.musteriadres</td>
+                            <td>@item.musteriemail</td>
+                            <td style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+                                <a href="/Musteri/CascadeSil/@item.musteriid" class="btn btn-danger btn-sm">Sil</a>
+                                <a href="/Musteri/MusteriGetir/@item.musteriid" class="btn btn-success btn-sm">Güncelle</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            
+        </div>
+    </div>
+</body>
+</html>
+

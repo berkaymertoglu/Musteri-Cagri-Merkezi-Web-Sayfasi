@@ -1,0 +1,31 @@
+﻿@model List<Tuple<string, string>>
+
+
+<link href="~/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/css/font-awesome.min.css" rel="stylesheet">
+<link href="~/css/animate.min.css" rel="stylesheet">
+<link href="~/css/prettyPhoto.css" rel="stylesheet">
+<link href="~/css/main.css" rel="stylesheet">
+<link href="~/css/responsive.css" rel="stylesheet">
+<link href="~/css/custom-form.css" rel="stylesheet">
+<link href="~/css/news.css" rel="stylesheet">
+
+
+<body>
+    <div class="centered-form">
+        <div class="form-container">
+            <h1 class="text-center" style="margin-top: 300px;">Sık Sorulan Sorular</h1>
+            <div class="faq-section">
+                <div class="faq-content">
+                    @foreach (var item in Model)
+                    {
+                        <div class="faq-item">
+                            <h4>@item.Item1</h4>
+                            <p>@item.Item2</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

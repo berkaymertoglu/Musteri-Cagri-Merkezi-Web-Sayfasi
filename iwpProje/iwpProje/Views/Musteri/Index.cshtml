@@ -1,0 +1,84 @@
+﻿@model IEnumerable<iwpProje.Models.mustericagrikayitlari>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri Çağrı Kayıtları</title>
+    <link href="~/css/table.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/custom-form.css" rel="stylesheet">    
+</head>
+<body>
+    <div class="table-responsive">
+        <div>
+            <h1>Müşteri Çağrı Kayıtları</h1>
+
+            <!-- TempData'dan alınan verileri burada gösteriyoruz -->
+            @if (TempData["personelid"] != null)
+            {
+                        <div class="alert alert-info mt-2" style="background-color: #d1ecf1; color: #0c5460; border-color: #bee5eb;">
+                            <strong>Giriş Başarılı!</strong><br />
+                            <p><strong>Personel ID:</strong> @TempData["personelid"]</p>
+                            <p><strong>İsim:</strong> @TempData["isim"]</p>
+                            <p><strong>Soyisim:</strong> @TempData["soyisim"]</p>
+                            <p><strong>Oturum Başlangıç Zamanı:</strong> @TempData["oturumbaslangiczamani"]</p>
+                        </div>
+            }
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cagri ID</th>
+                        <th>Musteri ID</th>
+                        <th>Asistan Sicil</th>
+                        <th>Görüşme Konusu</th>
+                        <th>Görüşme Durumu</th>
+                        <th>Başlama Saati</th>
+                        <th>Bitiş Saati</th>
+                        <th>Cagri Süresi</th>
+                        <th>Ogünkü Çağrı Sayısı</th>
+                        <th>Ürettigi Prim</th>
+                        <th>Müşteri Adı</th>
+                        <th>İşlemler</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                                <tr>
+                                    <td>@item.cagriid</td>
+                                    <td>@item.musteriid</td>
+                                    <td>@item.asistansicil</td>
+                                    <td>@item.gorusmekonusuid</td>
+                                    <td>@item.gorusmedurumid</td>
+                                    <td>@item.baslamasaati</td>
+                                    <td>@item.bitissaati</td>
+                                    <td>@item.cagrisuresi</td>
+                                    <td>@item.ogunkucagrisayisi</td>
+                                    <td>@item.urettigiprim</td>
+                                    <td>@item.musteriadi</td>
+                                    <td style="display: flex; justify-content: center; align-items: center; gap: 5px;">
+                                        <a href="/Musteri/KayitSil/@item.cagriid" class="btn btn-danger btn-sm">Sil</a>
+                                        <a href="/Musteri/KayitGetir/@item.cagriid" class="btn btn-success btn-sm">Güncelle</a>
+                                    </td>
+                                </tr>
+                    }
+                </tbody>
+            </table>
+            <br/>
+            <div style="display: flex; align-items: center; gap: 25px;">
+                <a href="Musteri/CagriEkle" class="btn btn-primary">Yeni Çağrı Ekle</a>
+                <a href="Musteri/CagriKayitlariPDF" class="btn btn-primary" style="background-color: #5cb85c; border-color: #4cae4c; color: white;">PDF Olarak İndir</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

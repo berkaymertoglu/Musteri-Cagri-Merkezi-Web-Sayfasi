@@ -1,0 +1,8 @@
+﻿@model List<iwpProje.Models.Ogretmenler>
+
+@foreach(var item in Model)
+{
+    <li>
+        @item.Ad --- @item.Lakap --- @item.Islev
+    </li>
+}

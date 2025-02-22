@@ -1,0 +1,53 @@
+﻿@model IEnumerable<iwpProje.Models.cagrikayitlari1hafta>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri Çağrı Kayıtları</title>
+    <link href="~/css/table.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/custom-form.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="table-responsive">
+        <div>
+            <h1>Müşteri Çağrı Kayıtları</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Çağrı ID</th>
+                        <th>Müşteri Adı</th>
+                        <th>Görüşme Konusu</th>
+                        <th>Görüşme Tarihi</th>
+                        <th>Başlama Saati</th>
+                        <th>Bitiş Saati</th>
+                        <th>Görüşme Durumu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.cagriid</td>
+                            <td>@item.musteriadi</td>
+                            <td>@item.konu</td>
+                            <td>@item.gorusmetarihi</td>
+                            <td>@item.baslamasaati</td>
+                            <td>@item.bitissaati</td>
+                            <td>@item.durum</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

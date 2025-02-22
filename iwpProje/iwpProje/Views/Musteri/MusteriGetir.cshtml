@@ -1,0 +1,45 @@
+﻿@model iwpProje.Models.musteriler
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri Güncelleme</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/custom-form.css" rel="stylesheet">
+</head>
+<body>
+    <div class="centered-form">
+        <div class="form-container">
+            <h1 class="text-center">Müşteri Güncelleme</h1>
+            <form class="form-group" method="post" asp-action="MusteriGuncelle">
+
+                @Html.Hidden("eskiMusteriId", Model.musteriid)
+
+                @Html.TextBoxFor(m => m.musteriid, new { @placeholder = "Müşteri ID", @class = "form-control"})
+                <br />
+                @Html.TextBoxFor(m => m.musteriadi, new { @placeholder = "Müşteri Adı", @class = "form-control" })
+                <br />
+                @Html.TextBoxFor(m => m.musteritel, new { @placeholder = "Müşteri Telefon Numarası", type = "tel", @class = "form-control" })
+                <br />
+                @Html.TextBoxFor(m => m.musteriadres, new { @placeholder = "Müşteri Adresi", @class = "form-control" })
+                <br />
+                @Html.TextBoxFor(m => m.musteriemail, new { @placeholder = "Müşteri E-Posta", type = "email", @class = "form-control" })
+                <br />
+
+                <button class="btn btn-primary btn-block">Müşteriyi Güncelle</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

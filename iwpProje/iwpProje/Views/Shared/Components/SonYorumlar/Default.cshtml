@@ -1,0 +1,13 @@
+﻿@model List<iwpProje.Models.Yorum>
+
+<div class = "son-yorumlar">
+    <h3>Son Yorumlar</h3>
+    <ul>
+        @foreach (var yorum in Model)
+        {
+            <li>
+                <strong>@yorum.KullaniciAdi:</strong> @yorum.Icerik
+            </li>
+        }
+    </ul>
+</div>

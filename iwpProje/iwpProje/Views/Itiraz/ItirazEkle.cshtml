@@ -1,0 +1,35 @@
+﻿@model iwpProje.Models.itirazkayitlari
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni İtiraz Kaydı</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/custom-form.css" rel="stylesheet">
+</head>
+<body>
+    <div class="centered-form">
+        <div class="form-container">
+            <h1 class="text-center">Yeni İtiraz Kaydı</h1>
+            <form class="form-group" method="post" asp-action="ItirazEkle">
+                <div class="mb-3">
+                    @Html.Label("Asistanın Açıklaması", null, new { @class = "form-label" })
+                    @Html.TextAreaFor(m => m.asistaninaciklamasi, new { @class = "form-control", @placeholder = "Asistanın Açıklaması", @rows = "5" })
+                </div>
+                <button class="btn btn-primary btn-block">Açıklama Ekle</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model iwpProje.Models.login
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/custom-form.css" rel="stylesheet">
+</head>
+<body>
+    <div class="centered-form">
+        <div class="form-container">
+            <h1 class="text-center">Giriş Yap</h1>
+            <form method="post" asp-action="Login">
+                <!-- E-posta alanı model ile bağlandı -->
+                <div class="form-group">
+                    <label for="eposta">E-Posta</label>
+                    @Html.TextBoxFor(m => m.eposta, new { @class = "form-control", placeholder = "E-Postanızı Girin", required = "required" })
+                </div>
+                <!-- Şifre alanı model ile bağlandı -->
+                <div class="form-group">
+                    <label for="sifre">Şifre</label>
+                    @Html.PasswordFor(m => m.sifre, new { @class = "form-control", placeholder = "Şifrenizi Girin", required = "required" })
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+            </form>
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger mt-2" style="color: blue; background-color: #f8d7da; border-color: #f5c6cb;">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

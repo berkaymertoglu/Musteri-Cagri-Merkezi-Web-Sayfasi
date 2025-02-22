@@ -1,0 +1,84 @@
+﻿@model IEnumerable<iwpProje.Models.itirazkayitlari>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İtiraz Kayıtları</title>
+    <link href="~/css/table.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <link href="~/css/custom-form.css" rel="stylesheet">
+</head>
+<body>
+    @{
+        var personelid = Context.Session.GetString("personelid");
+    }
+
+    @if (personelid != null && !personelid.StartsWith("AST"))
+    {
+            <div class="table-responsive">
+                <div>
+                    <h1>İtiraz Kayıtları</h1>
+
+                    <!-- TempData'dan alınan verileri burada gösteriyoruz -->
+                @if (TempData["personelid"] != null)
+                {
+                            <div class="alert alert-info mt-3" style="background-color: #d1ecf1; color: #0c5460; border-color: #bee5eb;">
+                                <strong>Giriş Başarılı!</strong><br />
+                                <p><strong>Personel ID:</strong> @TempData["personelid"]</p>
+                                <p><strong>İsim:</strong> @TempData["isim"]</p>
+                                <p><strong>Soyisim:</strong> @TempData["soyisim"]</p>
+                                <p><strong>Oturum Başlangıç Zamanı:</strong> @TempData["oturumbaslangiczamani"]</p>
+                            </div>
+                }
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>İtiraz ID</th>
+                                <th>Tarih</th>
+                                <th>Asistan ID</th>
+                                <th>Asistanın Açıklaması</th>
+                                <th>Takım Liderinin Cevabı</th>
+                                <th>İtirazın Durumu</th>
+                                <th>İtiraza Konu Ay</th>
+                                <th>İlgili Takım Lideri</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var item in Model)
+                        {
+                                    <tr>
+                                        <td>@item.itirazid</td>
+                                        <td>@item.tarih</td>
+                                        <td>@item.asistanid</td>
+                                        <td>@item.asistaninaciklamasi</td>
+                                        <td>@(item.takimliderinincevabi ?? "Bilinmiyor")</td>
+                                        <td>@item.durumid</td>
+                                        <td>@item.itirazakonuay</td>
+                                        <td>@item.ilgilitakimlideri</td>
+                                    </tr>
+                        }
+                        </tbody>
+                    </table>
+                    <br />
+                    <a href="Itiraz/ItirazEkle" class="btn btn-primary"> İtiraz Cevapla </a>
+                </div>
+            </div>
+    }
+    else
+    {
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+            <div class="alert alert-danger mt-3" style="text-align: center;">
+                <strong>Yetkisiz Erişim!</strong> Bu sayfayı görüntülemek için gerekli yetkiniz yok.
+            </div>
+        </div>
+    }
+</body>
+</html>

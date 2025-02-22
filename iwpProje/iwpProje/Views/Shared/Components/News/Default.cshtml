@@ -1,0 +1,38 @@
+﻿@model List<News>
+@using iwpProje.Services
+
+<link href="~/css/news.css" rel="stylesheet">
+
+
+
+<div class="news-container">
+    <!-- Sol sütun -->
+    <div class="news-column news-column-left">
+        @foreach (var newsItem in Model.Take(Model.Count / 2))
+        {
+            <div class="news-item">
+                <h5><a href="@newsItem.Url" target="_blank">@newsItem.Title</a></h5>
+                <p>@newsItem.Description</p>
+                @if (!string.IsNullOrEmpty(newsItem.UrlToImage))
+                {
+                    <img src="@newsItem.UrlToImage" alt="News Image" class="news-image" />
+                }
+            </div>
+        }
+    </div>
+
+    <!-- Sağ sütun -->
+    <div class="news-column news-column-right">
+        @foreach (var newsItem in Model.Skip(Model.Count / 2))
+        {
+            <div class="news-item">
+                <h5><a href="@newsItem.Url" target="_blank">@newsItem.Title</a></h5>
+                <p>@newsItem.Description</p>
+                @if (!string.IsNullOrEmpty(newsItem.UrlToImage))
+                {
+                    <img src="@newsItem.UrlToImage" alt="News Image" class="news-image" />
+                }
+            </div>
+        }
+    </div>
+</div>
